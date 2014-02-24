@@ -1,6 +1,14 @@
 require_relative '../spec_helper'
 
 describe Movie do
+  let(:attributes) {{
+      title: "The Sting",
+      release_date: 1973,
+      director: "George Roy Hill",
+      lead: "Paul Newman",
+      in_theaters: false
+  }}
+  
   context Movie.new do
     it 'has a title' do
       subject.title = "The Matrix"
@@ -29,14 +37,6 @@ describe Movie do
   end
 
   context '::new' do
-    let(:attributes) {{
-      title: "The Sting",
-      release_date: 1973,
-      director: "George Roy Hill",
-      lead: "Paul Newman",
-      in_theaters: false
-    }}
-
     it 'can be instantiated without any attributes' do
       expect{Movie.new}.to_not raise_error
     end
