@@ -8,6 +8,10 @@ describe 'Movie' do
       lead: "Paul Newman",
       in_theaters: false
   }}
+
+  it 'inherits from ActiveRecord::Base' do
+    specify { Movie < ActiveRecord::Base }
+  end
   
   context 'Movie.new' do
     let(:movie) { Movie.new }
