@@ -15,22 +15,11 @@ RSpec.configure do |config|
   end
 end
 
-def load_rake(&block)
-  app = Rake.application
-  app.init
-  app.load_rakefile
-  yield app
-end
-
 def run_rake_task(task)
-  load_rake do |app|
-    app[task].invoke
-    app[task].reenable
+  RAKE_APP[task].invoke
+  if task == 'db:migrate'
+    RAKE_APP[task].reenable
   end
-end
-
-def clean_database
-  Movie.delete_all if defined?(Movie) && DB.tables.include?("movies")
 end
 
 def __
