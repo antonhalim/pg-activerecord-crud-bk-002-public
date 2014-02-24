@@ -22,13 +22,6 @@ def load_rake(&block)
   yield app
 end
 
-def reset_database
-  load_rake do |app|
-    app['db:migrate'].invoke
-    app['db:migrate'].reenable
-  end
-end
-
 def run_rake_task(task)
   load_rake do |app|
     app[task].invoke

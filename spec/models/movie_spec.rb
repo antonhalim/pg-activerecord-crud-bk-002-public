@@ -61,7 +61,7 @@ describe 'Movie' do
 
   context 'basic CRUD' do
     after do
-      reset_database
+      run_rake_task('db:migrate')
     end
 
     context 'creating' do
@@ -94,7 +94,7 @@ describe 'Movie' do
       end
 
       after do
-        reset_database
+        run_rake_task('db:migrate')
       end
 
       it 'can get the first item in the database' do
