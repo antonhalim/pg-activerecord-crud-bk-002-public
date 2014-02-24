@@ -85,7 +85,7 @@ describe 'Movie' do
     context 'reading' do
       before do
         5.times do |i|
-          Movie.create(name: "Movie_#{i}", release_date: i+2000)
+          Movie.create(title: "Movie_#{i}", release_date: i+2000)
         end
       end
 
@@ -110,7 +110,7 @@ describe 'Movie' do
       end
 
       it 'can retrieve from the database using different attributes' do
-        movie = Movie.create(name: "Title", release_date: 2000, director: "Me")
+        movie = Movie.create(title: "Title", release_date: 2000, director: "Me")
         expect(__).to eq(movie)
       end
 
@@ -121,40 +121,40 @@ describe 'Movie' do
 
     context 'updating' do
       it 'can be found, updated, and saved' do
-        Movie.create(name: "Awesome Flick")
+        Movie.create(title: "Awesome Flick")
         __
         __
         __
-        expect(Movie.find_by(name: "Even Awesomer Flick")).to_not be_nil
+        expect(Movie.find_by(title: "Even Awesomer Flick")).to_not be_nil
       end
 
       it 'can be updated using #update' do
-        Movie.create(name: "Wat?")
+        Movie.create(title: "Wat?")
         __
         __
-        expect(Movie.find_by(name: "Wat, huh?")).to_not be_nil
+        expect(Movie.find_by(title: "Wat, huh?")).to_not be_nil
       end
 
       it 'can update all records at once' do
         5.times do |i|
-          Movie.create(name: "Movie_#{i}", release_date: 2000+i)
+          Movie.create(title: "Movie_#{i}", release_date: 2000+i)
         end
         __
-        expect(Movie.find_by(name: "A Movie").size).to eq(5)
+        expect(Movie.find_by(title: "A Movie").size).to eq(5)
       end
     end
 
     context 'destroying' do
       it 'can destroy a single item' do
-        Movie.create(name: "That One Where the Guy Kicks Another Guy Once")
+        Movie.create(title: "That One Where the Guy Kicks Another Guy Once")
         __
         __
-        expect(Movie.find(name: "That One Where the Guy Kicks Another Guy Once")).to be_nil
+        expect(Movie.find(title: "That One Where the Guy Kicks Another Guy Once")).to be_nil
       end
 
       it 'can destroy all items at once' do
         10.times do |i|
-          Movie.create(name: "Movie_#{i}")
+          Movie.create(title: "Movie_#{i}")
         end
         __
         expect(Movie.all.size).to eq(0)
