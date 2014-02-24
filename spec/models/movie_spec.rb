@@ -51,7 +51,7 @@ describe 'Movie' do
     it 'can be saved to the database' do
       movie = Movie.new(attributes)
       movie.save
-      expect(Movie.find(attributes)).to eq(movie)
+      expect(Movie.find_by(attributes)).to eq(movie)
     end
   end
 
