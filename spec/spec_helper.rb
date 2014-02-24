@@ -11,7 +11,7 @@ RSpec.configure do |config|
   config.order = 'default'
 
   config.before do
-    reset_database
+    run_rake_task('db:migrate')
   end
 end
 
