@@ -25,3 +25,7 @@ end
 def clean_database
   Movie.delete_all if defined?(Movie) && DB.tables.include?("movies")
 end
+
+def __
+  raise "Replace __ with test code."
+end

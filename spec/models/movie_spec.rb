@@ -52,4 +52,107 @@ describe Movie do
       expect(Movie.find(attributes)).to eq(subject)
     end
   end
+
+  context 'basic CRUD' do
+    context 'creating' do
+      it 'can be instantiated and then saved' do
+        movie = __
+        movie.title = "This is a title."
+        __
+        expect(Movie.find_by(title: "This is a title").title).to eq("This is a title.")
+      end
+
+      it 'can be created with a hash of attributes' do
+        movie = __
+        expect(Movie.find_by(__)).to eq(movie)
+      end
+
+      it 'can be created in a block' do
+        movie = Movie.create do |m|
+          __
+        end
+
+        expect(Movie.last).to eq(movie)
+      end
+    end
+
+    context 'reading' do
+      before do
+        5.times do |i|
+          Movie.create(name: "Movie_#{i}", release_date: i+2000)
+        end
+      end
+
+      after do
+        clean_database
+      end
+
+      it 'can get the first item in the database' do
+        expect(__).to eq("Movie_0")
+      end
+
+      it 'can get the last item in the databse' do
+        expect(__).to eq("Movie_4")
+      end
+
+      it 'can get all items from the database' do
+        expect(__).to eq(5)
+      end
+
+      it 'can retrive from the database using an id' do
+        expect(Movie.find(1).title).to eq(__)
+      end
+
+      it 'can retrieve from the database using different attributes' do
+        movie = Movie.create(name: "Title", release_date: 2000, director: "Me")
+        expect(__).to eq(movie)
+      end
+
+      it 'can use a where clause and be sorted' do
+        expect(__.map{|m| m.title}).to eq(["Movie_4", "Movie_3"])
+      end
+    end
+
+    context 'updating' do
+      it 'can be found, updated, and saved' do
+        Movie.create(name: "Awesome Flick")
+        __
+        __
+        __
+        expect(Movie.find_by(name: "Even Awesomer Flick")).to_not be_nil
+      end
+
+      it 'can be updated using #update' do
+        Movie.create(name: "Wat?")
+        __
+        __
+        expect(Movie.find_by(name: "Wat, huh?")).to_not be_nil
+      end
+
+      it 'can update all records at once' do
+        5.times do |i|
+          Movie.create(name: "Movie_#{i}", release_date: 2000+i)
+        end
+        __
+        expect(Movie.find_by(name: "A Movie").size).to eq(5)
+      end
+    end
+
+    context 'destroying' do
+      it 'can destroy a single item' do
+        Movie.create(name: "That One Where the Guy Kicks Another Guy Once")
+        __
+        __
+        expect(Movie.find(name: "That One Where the Guy Kicks Another Guy Once")).to be_nil
+      end
+
+      it 'can destroy all items at once' do
+        10.times do |i|
+          Movie.create(name: "Movie_#{i}")
+        end
+        __
+        expect(Movie.all.size).to eq(0)
+      end
+    end
+  end
 end
