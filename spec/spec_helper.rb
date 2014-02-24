@@ -28,17 +28,12 @@ def reset_database
     app['db:migrate'].reenable
   end
 end
-#   app = Rake.application
-#   app.init
-#   app.load_rakefile
-#   app['db:migrate'].invoke
-#   app['db:migrate'].reenable
-# end
 
 def run_rake_task(task)
-  app = Rake.application
-  app.init
-  app.load_rakefile
+  load_rake do |app|
+    app[task].invoke
+    app[task].reenable
+  end
 end
 
 def clean_database
