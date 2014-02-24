@@ -8,4 +8,6 @@ wip
 
 ## Description
 
+In this lab, you'll be playing around with the basic CRUD features of ActiveRecord.
+
 ## Instructions
