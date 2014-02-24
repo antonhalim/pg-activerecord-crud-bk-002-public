@@ -10,7 +10,7 @@ describe 'Movie' do
   }}
 
   it 'inherits from ActiveRecord::Base' do
-    specify { Movie < ActiveRecord::Base }
+    expect(Movie.superclass).to eq(ActiveRecord::Base)
   end
   
   context 'Movie.new' do
