@@ -60,10 +60,6 @@ describe 'Movie' do
   end
 
   context 'basic CRUD' do
-    after do
-      run_rake_task('db:migrate')
-    end
-
     context 'creating' do
       it 'can be instantiated and then saved' do
         movie = __
@@ -92,11 +88,7 @@ describe 'Movie' do
           Movie.create(title: "Movie_#{i}", release_date: i+2000)
         end
       end
-
-      after do
-        run_rake_task('db:migrate')
-      end
-
+      
       it 'can get the first item in the database' do
         expect(__).to eq("Movie_0")
       end
