@@ -56,6 +56,10 @@ describe 'Movie' do
   end
 
   context 'basic CRUD' do
+    after do
+      clean_database
+    end
+
     context 'creating' do
       it 'can be instantiated and then saved' do
         movie = __
