@@ -2,7 +2,6 @@
 movies:
 - !ruby/object:Movie
   attributes:
-    id: 1
     title: Wargames
     release_date: 1983
     director: John Badham
@@ -10,33 +9,29 @@ movies:
     in_theaters: false
 - !ruby/object:Movie
   attributes:
-    id: 1
-    title: Wargames
-    release_date: 1983
-    director: John Badham
-    lead: Matthew Broderick
+    title: The Sting
+    release_date: 1973
+    director: George Roy Hill
+    lead: Paul Newman
     in_theaters: false
 - !ruby/object:Movie
   attributes:
-    id: 1
-    title: Wargames
-    release_date: 1983
-    director: John Badham
-    lead: Matthew Broderick
-    in_theaters: false
+    title: Nebraska
+    release_date: 2013
+    director: Alexander Payne
+    lead: Bruce Dern
+    in_theaters: true
 - !ruby/object:Movie
   attributes:
-    id: 1
-    title: Wargames
-    release_date: 1983
-    director: John Badham
-    lead: Matthew Broderick
-    in_theaters: false
+    title: Muppets Most Wanted
+    release_date: 2014
+    director: James Bobin
+    lead: Tom Hiddleston
+    in_theaters: true
 - !ruby/object:Movie
   attributes:
-    id: 1
-    title: Wargames
-    release_date: 1983
-    director: John Badham
-    lead: Matthew Broderick
+    title: Zero Dark Thirty
+    release_date: 2012
+    director: Kathryn Bigelow
+    lead: Jessica Chastain
     in_theaters: false
