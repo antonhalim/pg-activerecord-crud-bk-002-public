@@ -15,12 +15,30 @@ RSpec.configure do |config|
   end
 end
 
-def reset_database
+def load_rake(&block)
   app = Rake.application
   app.init
   app.load_rakefile
-  app['db:migrate'].invoke
-  app['db:migrate'].reenable
+  yield app
+end
+
+def reset_database
+  load_rake do |app|
+    app['db:migrate'].invoke
+    app['db:migrate'].reenable
+  end
+end
+#   app = Rake.application
+#   app.init
+#   app.load_rakefile
+#   app['db:migrate'].invoke
+#   app['db:migrate'].reenable
+# end
+
+def run_rake_task(task)
+  app = Rake.application
+  app.init
+  app.load_rakefile
 end
 
 def clean_database
