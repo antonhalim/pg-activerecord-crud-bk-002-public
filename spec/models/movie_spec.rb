@@ -57,7 +57,7 @@ describe 'Movie' do
 
   context 'basic CRUD' do
     after do
-      clean_database
+      reset_database
     end
 
     context 'creating' do
@@ -90,7 +90,7 @@ describe 'Movie' do
       end
 
       after do
-        clean_database
+        reset_database
       end
 
       it 'can get the first item in the database' do
