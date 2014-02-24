@@ -144,7 +144,7 @@ describe 'Movie' do
           Movie.create(title: "Movie_#{i}", release_date: 2000+i)
         end
         __
-        expect(Movie.find_by(title: "A Movie").size).to eq(5)
+        expect(Movie.where(title: "A Movie").size).to eq(5)
       end
     end
 
@@ -153,7 +153,7 @@ describe 'Movie' do
         Movie.create(title: "That One Where the Guy Kicks Another Guy Once")
         __
         __
-        expect(Movie.find(title: "That One Where the Guy Kicks Another Guy Once")).to be_nil
+        expect(Movie.find_by(title: "That One Where the Guy Kicks Another Guy Once")).to be_nil
       end
 
       it 'can destroy all items at once' do
