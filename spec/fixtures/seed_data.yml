@@ -1,0 +1,42 @@
+---
+movies:
+- !ruby/object:Movie
+  attributes:
+    id: 1
+    title: Wargames
+    release_date: 1983
+    director: John Badham
+    lead: Matthew Broderick
+    in_theaters: false
+- !ruby/object:Movie
+  attributes:
+    id: 1
+    title: Wargames
+    release_date: 1983
+    director: John Badham
+    lead: Matthew Broderick
+    in_theaters: false
+- !ruby/object:Movie
+  attributes:
+    id: 1
+    title: Wargames
+    release_date: 1983
+    director: John Badham
+    lead: Matthew Broderick
+    in_theaters: false
+- !ruby/object:Movie
+  attributes:
+    id: 1
+    title: Wargames
+    release_date: 1983
+    director: John Badham
+    lead: Matthew Broderick
+    in_theaters: false
+- !ruby/object:Movie
+  attributes:
+    id: 1
+    title: Wargames
+    release_date: 1983
+    director: John Badham
+    lead: Matthew Broderick
+    in_theaters: false
