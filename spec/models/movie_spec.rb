@@ -61,7 +61,7 @@ describe 'Movie' do
         movie = __
         movie.title = "This is a title."
         __
-        expect(Movie.find_by(title: "This is a title").title).to eq("This is a title.")
+        expect(Movie.find_by(title: "This is a title.").title).to eq("This is a title.")
       end
 
       it 'can be created with a hash of attributes' do
