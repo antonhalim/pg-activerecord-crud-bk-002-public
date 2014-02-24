@@ -46,8 +46,9 @@ describe Movie do
     end
   end
 
-  context Movie.new(attributes), '#save' do
+  context '#save' do
     it 'can be saved to the database' do
+      movie = Movie.new(attributes)
       subject.save
       expect(Movie.find(attributes)).to eq(subject)
     end
