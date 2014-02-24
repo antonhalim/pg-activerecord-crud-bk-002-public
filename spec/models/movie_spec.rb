@@ -29,13 +29,13 @@ describe Movie do
   end
 
   context '::new' do
-    let(:attributes) {
+    let(:attributes) {{
       title: "The Sting",
       release_date: 1973,
       director: "George Roy Hill",
       lead: "Paul Newman",
       in_theaters: false
-    }
+    }}
 
     it 'can be instantiated without any attributes' do
       expect{Movie.new}.to_not raise_error
