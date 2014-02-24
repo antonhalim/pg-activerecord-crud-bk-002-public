@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-describe Movie do
+describe 'Movie' do
   let(:attributes) {{
       title: "The Sting",
       release_date: 1973,
@@ -9,30 +9,31 @@ describe Movie do
       in_theaters: false
   }}
   
-  context Movie.new do
+  context 'Movie.new' do
+    let(:movie) { Movie.new }
     it 'has a title' do
-      subject.title = "The Matrix"
-      expect(subject.title).to eq("The Matrix")
+      movie.title = "The Matrix"
+      expect(movie.title).to eq("The Matrix")
     end
 
     it 'has a release date' do
-      subject.release_date = 1999
-      expect(subject.release_date).to eq(1999)
+      movie.release_date = 1999
+      expect(movie.release_date).to eq(1999)
     end
 
     it 'has a director' do
-      subject.director = "The Wachowski Brothers"
-      expect(subject.director).to eq("The Wachowski Brothers")
+      movie.director = "The Wachowski Brothers"
+      expect(movie.director).to eq("The Wachowski Brothers")
     end
 
     it 'has a lead actor/actress' do
-      subject.lead = "Keanu Reeves"
-      expect(subject.lead).to eq("Keanu Reeves")
+      movie.lead = "Keanu Reeves"
+      expect(movie.lead).to eq("Keanu Reeves")
     end
 
     it 'has an in theaters flag' do
-      subject.in_theaters = false
-      expect(subject.in_theaters).to eq(false)
+      movie.in_theaters = false
+      expect(movie.in_theaters).to eq(false)
     end
   end
 
@@ -49,8 +50,8 @@ describe Movie do
   context '#save' do
     it 'can be saved to the database' do
       movie = Movie.new(attributes)
-      subject.save
-      expect(Movie.find(attributes)).to eq(subject)
+      movie.save
+      expect(Movie.find(attributes)).to eq(movie)
     end
   end
 
