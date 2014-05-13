@@ -1,6 +1,7 @@
 ---
 tags: activerecord, orm, oop
 languages: ruby
+  resources: 3
 ---
 
 # Active Record CRUD
@@ -22,3 +23,7 @@ As usual, the first thing you should do (after reading this README, of course) i
 7. The last spec you'll be asked to make pass is one that tests a `db:seed` Rake task. When working with databases, it's often nice to be able to seed, or prep, our database with data. There are a zillion ways to create this seed data, but for this test suite we'll be using a file in `apec/fixtures` called `seed_data.yml`. Take a look at it. Not too difficult to read, right?
 
   You'll need to define a rake task, `:seed` in the `db` namespace in the `Rakefile` in this project. You can parse through the YAML file however you'd like, but the easiest way to do it will be to use the [YAML::Store](http://ruby-doc.org/stdlib-2.1.0/libdoc/yaml/rdoc/YAML/Store.html) module from Ruby. Read through the documentation, it gives a pretty good example of how you might use it.
+## Resources
+* [Ruby on Rails Guide](http://guides.rubyonrails.org/) - [Active Record Querying](http://guides.rubyonrails.org/active_record_querying.html)
+* [Ruby Docs](http://ruby-doc.org/) - [YAML::Store](http://ruby-doc.org/stdlib-2.1.0/libdoc/yaml/rdoc/YAML/Store.html)
+* [Tuts+](http://tutorials.tutsplus.com/) - [Active Record: The Rails Database Bridge](http://code.tutsplus.com/tutorials/active-record-the-rails-database-bridge--net-30489)
