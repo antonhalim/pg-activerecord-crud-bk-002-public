@@ -1,6 +1,11 @@
 require 'bundler/setup'
 Bundler.require
 
+if ENV["PLAYLISTER_ENV"] == "test"
+  PG.connect.exec('DROP DATABASE IF EXISTS activerecord_crud_test')
+  PG.connect.exec('CREATE DATABASE activerecord_crud_test')
+end
+
 require 'active_record'
 require 'rake'
 require 'yaml/store'
