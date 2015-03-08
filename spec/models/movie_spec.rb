@@ -12,7 +12,7 @@ describe 'Movie' do
   it 'inherits from ActiveRecord::Base' do
     expect(Movie.superclass).to eq(ActiveRecord::Base)
   end
-  
+
   context 'Movie.new' do
     let(:movie) { Movie.new }
     it 'has a title' do
@@ -62,20 +62,20 @@ describe 'Movie' do
   context 'basic CRUD' do
     context 'creating' do
       it 'can be instantiated and then saved' do
-        movie = __
+        movie = Movie.new
         movie.title = "This is a title."
-        __
+        movie.save
         expect(Movie.find_by(title: "This is a title.").title).to eq("This is a title.")
       end
 
       it 'can be created with a hash of attributes' do
-        movie = __
-        expect(Movie.find_by(__)).to eq(movie)
+        movie = Movie.create(attributes)
+        expect(Movie.find_by(attributes)).to eq(movie)
       end
 
       it 'can be created in a block' do
         movie = Movie.create do |m|
-          __
+          m.title = "American Sniper"
         end
 
         expect(Movie.last).to eq(movie)
@@ -88,46 +88,46 @@ describe 'Movie' do
           Movie.create(title: "Movie_#{i}", release_date: i+2000)
         end
       end
-      
+
       it 'can get the first item in the database' do
-        expect(__).to eq("Movie_0")
+        expect(Movie.first.title).to eq("Movie_0")
       end
 
       it 'can get the last item in the databse' do
-        expect(__).to eq("Movie_4")
+        expect(Movie.last.title).to eq("Movie_4")
       end
 
       it 'can get all items from the database' do
-        expect(__).to eq(5)
+        expect(Movie.all.count).to eq(5)
       end
 
       it 'can retrive from the database using an id' do
-        expect(Movie.find(1).title).to eq(__)
+        expect(Movie.find(1).title).to eq("Movie_0")
       end
 
       it 'can retrieve from the database using different attributes' do
         movie = Movie.create(title: "Title", release_date: 2000, director: "Me")
-        expect(__).to eq(movie)
+        expect(Movie.find_by(title: "Title")).to eq(movie)
       end
 
       it 'can use a where clause and be sorted' do
-        expect(__.map{|m| m.title}).to eq(["Movie_4", "Movie_3"])
+        expect(Movie.where('id >3').sort.reverse.map{|m| m.title}).to eq(["Movie_4", "Movie_3"])
       end
     end
 
     context 'updating' do
       it 'can be found, updated, and saved' do
         Movie.create(title: "Awesome Flick")
-        __
-        __
-        __
+        movie = Movie.find_by(title: "Awesome Flick")
+        movie.update(title: "Even Awesomer Flick")
+        movie.save
         expect(Movie.find_by(title: "Even Awesomer Flick")).to_not be_nil
       end
 
       it 'can be updated using #update' do
         Movie.create(title: "Wat?")
-        __
-        __
+        movie = Movie.find_by(title: "Wat?")
+        movie.update(title: "Wat, huh?")
         expect(Movie.find_by(title: "Wat, huh?")).to_not be_nil
       end
 
@@ -135,7 +135,7 @@ describe 'Movie' do
         5.times do |i|
           Movie.create(title: "Movie_#{i}", release_date: 2000+i)
         end
-        __
+        Movie.all.each{|movie| movie.update(title: "A Movie")}
         expect(Movie.where(title: "A Movie").size).to eq(5)
       end
     end
@@ -143,8 +143,8 @@ describe 'Movie' do
     context 'destroying' do
       it 'can destroy a single item' do
         Movie.create(title: "That One Where the Guy Kicks Another Guy Once")
-        __
-        __
+        movie = Movie.find_by(title: "That One Where the Guy Kicks Another Guy Once")
+        movie.destroy
         expect(Movie.find_by(title: "That One Where the Guy Kicks Another Guy Once")).to be_nil
       end
 
@@ -152,7 +152,7 @@ describe 'Movie' do
         10.times do |i|
           Movie.create(title: "Movie_#{i}")
         end
-        __
+        Movie.all.each{|movie| movie.destroy}
         expect(Movie.all.size).to eq(0)
       end
     end
